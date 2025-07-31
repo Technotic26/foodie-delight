@@ -1,0 +1,138 @@
+.cart-page .page-title {
+  margin-bottom: 2rem;
+}
+
+.empty-cart-container {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.empty-cart-message {
+  font-size: 1.2rem;
+  color: #777;
+  margin-bottom: 2rem;
+}
+
+.cart-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.cart-items-list {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.cart-item-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.item-details { flex-grow: 1; }
+.item-price { color: #888; font-size: 0.9rem; }
+.item-total-price { font-weight: 600; width: 80px; text-align: right; }
+
+.item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--background-color);
+  border-radius: 50px;
+  padding: 0.25rem;
+}
+
+.item-quantity button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.item-quantity button:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.item-quantity span {
+  font-weight: 600;
+  min-width: 20px;
+  text-align: center;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #aaa;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.remove-btn:hover {
+  color: var(--primary-color);
+  transform: scale(1.2);
+}
+
+.cart-summary {
+  width: 300px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 100px; /* Adjust based on your navbar height */
+}
+
+.cart-summary h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--dark-color);
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.checkout-btn-link { text-decoration: none; }
+
+.checkout-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.checkout-btn:hover {
+  background-color: #e55353;
+}

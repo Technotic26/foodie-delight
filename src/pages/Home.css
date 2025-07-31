@@ -1,0 +1,32 @@
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: calc(100vh - 160px); /* Adjust height based on navbar/footer height */
+}
+
+.hero-section h1 {
+  font-size: 3.5rem;
+  color: var(--dark-color);
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  margin: 1rem 0 2rem;
+}
+
+.cta-button {
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #e55353;
+  transform: scale(1.05);
+}
