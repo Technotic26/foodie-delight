@@ -8,8 +8,8 @@ const Checkout = () => {
 
   const handlePlaceOrder = (e) => {
     e.preventDefault();
-    // In a real app, you'd process the payment here
-    alert(`Thank you for your order of $${total}! Your food is on its way.`);
+    
+    alert(`Thank you for your order of ₹${total}! Your food is on its way.`);
   };
 
   return (

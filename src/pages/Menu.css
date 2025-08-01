@@ -1,5 +1,5 @@
 .menu-page {
-  /* Add padding to prevent content from touching the screen edges */
+ 
   padding: 2rem 1rem;
 }
 
@@ -10,6 +10,21 @@
   color: var(--dark-color);
 }
 
+.page-subtitle {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.no-results {
+  grid-column: 1 / -1; 
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 3rem;
+  color: #888;
+}
+
 .filter-controls {
   margin-bottom: 2.5rem;
   background-color: #fff;
@@ -18,16 +33,16 @@
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-/* ... (keep your other filter-controls styles) ... */
+
 
 .menu-grid {
   display: grid;
-  /* On small screens, always show one card per row */
+ 
   grid-template-columns: 1fr;
   gap: 2rem;
 }
 
-/* For screens 640px and wider (tablets/desktops), switch to a multi-column grid */
+
 @media (min-width: 640px) {
   .menu-grid {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -42,32 +57,32 @@
   padding: 2rem;
 }
 
-/* Find and replace these rules in src/pages/Menu.css */
+
 
 .category-filters {
   display: flex;
-  overflow-x: auto; /* This makes the container scroll horizontally */
-  white-space: nowrap; /* This keeps all buttons on a single line */
-  padding-bottom: 1rem; /* Adds space below the buttons */
+  overflow-x: auto; 
+  white-space: nowrap; 
+  padding-bottom: 1rem; 
   
-  /* Hides the scrollbar for a cleaner look */
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  
+  -ms-overflow-style: none;  
+  scrollbar-width: none;  
 }
 .category-filters::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
+  display: none;
 }
 
 .category-filters button {
-  flex-shrink: 0; /* Prevents buttons from shrinking */
+  flex-shrink: 0; 
   padding: 0.7rem 1.5rem;
-  margin-right: 0.75rem; /* Creates space between buttons */
+  margin-right: 0.75rem; 
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--dark-color);
   background-color: #fff;
   border: 1px solid #e0e0e0;
-  border-radius: 50px; /* Creates the "pill" shape */
+  border-radius: 50px; 
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }

@@ -8,7 +8,7 @@ const Cart = () => {
 
   return (
     <div className="cart-page">
-      <h1 className="page-title">Your Shopping Cart</h1>
+      <h1 className="page-title">Your Cart</h1>
       {cartItems.length === 0 ? (
         <div className="empty-cart-container">
             <p className="empty-cart-message">Your cart feels a little empty.</p>
@@ -19,17 +19,19 @@ const Cart = () => {
           <div className="cart-items-list">
             {cartItems.map(item => (
               <div key={item.id} className="cart-item">
-                <img src={item.image} alt={item.name} className="cart-item-image" />
+                <img src={item.image} alt={item.name} />
                 <div className="item-details">
                   <h3>{item.name}</h3>
-                  <p className="item-price">₹{item.price}</p>
+                  
+                  <p className="item-price">₹{item.price.toFixed(2)}</p>
                 </div>
                 <div className="item-quantity">
                   <button onClick={() => updateQuantity(item.id, -1)}>-</button>
                   <span>{item.quantity}</span>
                   <button onClick={() => updateQuantity(item.id, 1)}>+</button>
                 </div>
-                <p className="item-total-price">₹{item.price * item.quantity}</p>
+                
+                <p className="item-total-price">₹{(item.price * item.quantity).toFixed(2)}</p>
                 <button onClick={() => removeFromCart(item.id)} className="remove-btn">
                   ×
                 </button>
@@ -40,6 +42,7 @@ const Cart = () => {
             <h2>Order Summary</h2>
             <div className="summary-line">
               <span>Total:</span>
+              
               <span>₹{getCartTotal()}</span>
             </div>
             <Link to="/checkout" className="checkout-btn-link">

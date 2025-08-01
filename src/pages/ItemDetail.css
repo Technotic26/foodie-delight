@@ -1,0 +1,115 @@
+.item-detail-page {
+  padding: 2rem 5%;
+  min-height: 80vh;
+}
+
+.item-detail-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+}
+
+.item-image-container {
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.item-detail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.item-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-detail-name {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--dark-color);
+  line-height: 1.2;
+}
+
+.item-detail-rating {
+  margin: 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+  background-color: #fffbe8;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.item-detail-description {
+  font-size: 1.1rem;
+  margin: 1rem 0;
+  flex-grow: 1;
+  color: #555;
+}
+
+.item-detail-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  border-top: 1px solid #eee;
+  padding-top: 2rem;
+}
+
+.item-detail-price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.add-to-cart-btn-large {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.add-to-cart-btn-large:hover {
+  background-color: #e55353;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.5);
+}
+
+
+@media (max-width: 900px) {
+  .item-detail-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+
+.item-not-found {
+  text-align: center;
+  padding: 5rem 1rem;
+}
+.item-not-found h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.item-not-found .cta-button {
+  margin-top: 2rem;
+}

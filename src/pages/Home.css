@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  height: calc(100vh - 160px); /* Adjust height based on navbar/footer height */
+  height: calc(100vh - 160px);
 }
 
 .hero-section h1 {

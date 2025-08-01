@@ -1,57 +1,80 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
+import { motion } from 'framer-motion'; 
 import FoodCard from '../components/FoodCard';
 import { menuItems } from '../data/menuItems';
-import { useCart } from '../context/CartContext';
+import SearchAndFilter from '../components/SearchAndFilter';
 import './Menu.css';
 
+
+const textContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, 
+    },
+  },
+};
+
+const textItemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
 const Menu = () => {
-  const { addToCart } = useCart();
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
-  const categories = ['All', ...new Set(menuItems.map(item => item.category))];
+  const categories = useMemo(() => ['All', ...new Set(menuItems.map(item => item.category))], []);
 
-  const filteredItems = menuItems
-    .filter(item => 
-      (selectedCategory === 'All' || item.category === selectedCategory)
-    )
-    .filter(item => 
-      item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+  const filteredItems = useMemo(() => {
+    return menuItems.filter(item => {
+      const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory;
+      const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                            item.description.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  }, [searchQuery, selectedCategory]);
 
   return (
     <div className="menu-page">
-      <h1 className="page-title">Explore Our Menu</h1>
-
-      <div className="filter-controls">
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Search for food..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
-        <div className="category-filters">
-          {categories.map(category => (
-            <button
-              key={category}
-              className={selectedCategory === category ? 'active' : ''}
-              onClick={() => setSelectedCategory(category)}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-      </div>
+      
+      <motion.div
+        className="page-header"
+        variants={textContainerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.h1 className="page-title" variants={textItemVariants}>
+          Explore Our Menu
+        </motion.h1>
+        <motion.p className="page-subtitle" variants={textItemVariants}>
+          Find your next favorite dish with our smart search and filters.
+        </motion.p>
+      </motion.div>
+      
+      <SearchAndFilter
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        categories={categories.filter(c => c !== 'All')}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+      />
 
       <div className="menu-grid">
         {filteredItems.length > 0 ? (
-          filteredItems.map((item) => (
-            <FoodCard key={item.id} item={item} onAddToCart={addToCart} />
+          filteredItems.map(item => (
+            <FoodCard key={item.id} item={item} searchQuery={searchQuery} />
           ))
         ) : (
-          <p className="no-items-message">No items match your search.</p>
+          <p className="no-results">No dishes found. Try a different search or filter!</p>
         )}
       </div>
     </div>

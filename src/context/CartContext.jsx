@@ -1,26 +1,26 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
-import toast from 'react-hot-toast';
 
 const CartContext = createContext();
-export const useCart = () => useContext(CartContext);
+
+export const useCart = () => {
+  return useContext(CartContext);
+};
+
+
+const getInitialCart = () => {
+  const savedCart = localStorage.getItem('cart');
+  return savedCart ? JSON.parse(savedCart) : [];
+};
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState(() => {
-    try {
-      const localData = localStorage.getItem('cart');
-      return localData ? JSON.parse(localData) : [];
-    } catch (error) {
-      console.error("Could not parse cart from local storage", error);
-      return [];
-    }
-  });
+  const [cartItems, setCartItems] = useState(getInitialCart);
 
+  
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cartItems));
   }, [cartItems]);
 
   const addToCart = (item) => {
-    toast.success(`${item.name} added to cart!`);
     setCartItems((prevItems) => {
       const existingItem = prevItems.find((cartItem) => cartItem.id === item.id);
       if (existingItem) {
@@ -36,9 +36,9 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = (itemId) => {
-    setCartItems(prevItems => prevItems.filter(item => item.id !== itemId));
+    setCartItems((prevItems) => prevItems.filter(item => item.id !== itemId));
   };
-  
+
   const updateQuantity = (itemId, amount) => {
     setCartItems((prevItems) => {
       return prevItems.map(item => {
@@ -47,8 +47,13 @@ export const CartProvider = ({ children }) => {
           return newQuantity > 0 ? { ...item, quantity: newQuantity } : null;
         }
         return item;
-      }).filter(Boolean); // This removes items if their quantity becomes 0
+      }).filter(Boolean); 
     });
+  };
+
+  
+  const clearCart = () => {
+    setCartItems([]);
   };
 
   const getCartItemCount = () => {
@@ -64,6 +69,7 @@ export const CartProvider = ({ children }) => {
     addToCart,
     removeFromCart,
     updateQuantity,
+    clearCart,
     getCartItemCount,
     getCartTotal,
   };
