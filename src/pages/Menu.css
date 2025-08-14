@@ -16,6 +16,49 @@
   font-size: 1.1rem;
   color: #666;
 }
+.menu-page {
+  padding: 2rem 5%;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--dark-color);
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  justify-items: center; 
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 3rem;
+  color: #888;
+}
+
+
+[data-theme='dark'] .page-subtitle {
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
 
 .no-results {
   grid-column: 1 / -1; 
