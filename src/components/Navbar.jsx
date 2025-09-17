@@ -12,7 +12,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <Link to="/" className="navbar-logo">
-        FoodieDelight 🍔
+        Adlakha's Kitchen 🍔
       </Link>
       <div className="navbar-actions">
         <ul className="navbar-links">

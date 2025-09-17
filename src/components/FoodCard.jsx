@@ -28,7 +28,7 @@ const FoodCard = ({ item, searchQuery }) => {
         whileHover={{ scale: 1.03, y: -5 }}
         transition={{ duration: 0.3 }}
       >
-        {/* This wrapper is the key to consistent image sizes */}
+       
         <div className="food-card-image-wrapper">
           <img src={item.image} alt={item.name} className="food-card-image" />
           <span className="food-card-rating">⭐ {item.rating.toFixed(1)}</span>

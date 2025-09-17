@@ -6,8 +6,8 @@ const Footer = () => {
   return (
     <footer className="site-footer">
       <div className="footer-content">
-        <p>&copy; {currentYear} FoodieDelight. All Rights Reserved.</p>
-        <p>Crafted with ❤️ in Prayagraj</p>
+        <p>&copy; {currentYear} Adlakha's Kitchen. All Rights Reserved.</p>
+        <p>Made with ❤️ in Prayagraj</p>
       </div>
     </footer>
   );
